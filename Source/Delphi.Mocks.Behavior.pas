@@ -194,6 +194,8 @@ function TBehavior.Match(const Args: TArray<TValue>): Boolean;
     i : integer;
   begin
     result := False;
+    if Length(Args) <> (Length(FArgs) + 1 ) then
+      exit;
     for i := 0 to High(FMatchers) do
     begin
       if not FMatchers[i].Match(Args[i+1]) then
