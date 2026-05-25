@@ -16,10 +16,12 @@ metadata:
   tags: [ mocking, unit testing ]
   repositoryCommit: #HASH#
 
-# package folder names are a mess. 
+variables:
+  packageSource: Rad Studio $compilernoprefix$
+
 targetPlatforms:
   - compiler from: delphixe2
-    compiler to: delphi13
+    compiler to: delphi13.0
     platforms: [ win32, win64 ]
 
 templates:
@@ -28,7 +30,7 @@ templates:
       - src: ./LICENSE.txt
       - src: ./source/*.pas
       - src: ./source/*.inc
-      - src: ./packages/*.dpk
-      - src: ./packages/*.dproj
+      - src: ./packages/$packageSource$/*.dpk
+      - src: ./packages/$packageSource$/*.dproj
     build:
-      - project: ./packages/VSoft.DelphiMocksR.dproj
+      - project: ./packages/$packageSource$/VSoft.DelphiMocksR.dproj
